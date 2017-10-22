@@ -16,6 +16,14 @@ char* strupr(char* s)
     return s;
 }
 
+inline void type_of_word(char f)
+ 
+{    if (f=='m') cout<<"\t\t\t\tMOVIE";
+     if (f=='a') cout<<"\t\t\t\tANIMAL";
+     if (f=='p') cout<<"\t\t\t\tSPORT";
+     if (f=='s') cout<<"\t\t\t\tSONG";
+}
+
 int main(int argc, char **argv)
 {
 	//printf("hello world\n");
@@ -33,7 +41,7 @@ int main(int argc, char **argv)
             cout<<"(C) Computer chooses word\n\n";
             cout<<"(A) Add new word to list\n\n";
             cout<<"(Q) Quit\n\n\n";
-            cout<<"Enter your choice (E - C - Q): ";
+            cout<<"Enter your choice (E - C - A - Q): ";
             fflush(stdin);
             cin>>ch2;
         }while(ch2!='e'&&ch2!='E'&&ch2!='c'&&ch2!='C'&&ch2!='a'&&ch2!='A'&&ch2!='q'&&ch2!='Q');
@@ -42,7 +50,7 @@ int main(int argc, char **argv)
         {
             exit(0);
         }
-        else if(ch2 == 'c' || ch2 == 'C')
+        if(ch2 == 'c' || ch2 == 'C')
         {
             ifstream fin("hangword.txt");
             
@@ -79,7 +87,7 @@ int main(int argc, char **argv)
             
             finn.close();
         }
-        else if(ch2 == 'a'&& ch2 == 'A')
+        if(ch2 == 'a'|| ch2 == 'A')
         {
             ofstream fout("hangword.txt",ios::app);
             
@@ -106,17 +114,25 @@ int main(int argc, char **argv)
             
             cout<<"The word should not exceed 25 letters\n\n";
             cout<<"Enter the word : ";
-            cin.getline(word,25);
+            fflush(stdin);
+            //cin.getline(word,25,'\n');
+            cin>>word;
+            //gets(word);
+            //getline(cin,word);
+            //scanf("%s",word);
+            fgets(word, 25, stdin);
             
             fout<<h<<word<<endl;
             
             fout.close();
         }
-        else if(ch2 =='E' || ch2 == 'e')
+        if(ch2 =='E' || ch2 == 'e')
         {
             system("clear");
             cout<<"\t\t\tType the word : ";
-            cin.getline(word,25);
+            fflush(stdin);
+            //cin.getline(word,25);
+            cin>>word;
         }
         
         if(ch2 == 'E' || ch2 == 'e' || ch2 == 'C' || ch2 == 'c')
@@ -149,7 +165,7 @@ int main(int argc, char **argv)
             {
                 there:
                 
-                //type_of_word(c);
+                type_of_word(c);
                 
                 if(k != 0)
                 {
